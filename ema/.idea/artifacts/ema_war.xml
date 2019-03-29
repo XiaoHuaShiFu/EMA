@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ema:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="scauaie.war">
+      <element id="artifact" artifact-name="ema:war exploded" />
+    </root>
+  </artifact>
+</component>
