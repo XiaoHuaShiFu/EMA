@@ -1,0 +1,21 @@
+{
+    "pages": [
+        "pages/login/login",
+        "pages/index/index",
+        "pages/my/my",
+        "pages/my/current_view/current_view",
+        "pages/my/message/message",
+        "pages/my/my_incident/my_incident",
+        "pages/my/set/set",
+        "pages/my/set/about_me/about_me",
+        "pages/index/incident_details/incident_details",
+        "pages/index/incident_details/comment_details/comment_details",
+        "pages/index/search/search"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "WeChat",
+        "navigationBarTextStyle": "black"
+    }
+}
