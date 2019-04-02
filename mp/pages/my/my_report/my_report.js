@@ -1,4 +1,4 @@
-// pages/my/my_incident/my_incident.js
+// pages/my/my_report/my_report.js
 Page({
 
     /**

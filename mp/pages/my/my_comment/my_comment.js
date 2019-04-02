@@ -1,4 +1,4 @@
-// pages/login/login.js
+// pages/my/my_comment/my_comment.js
 Page({
 
     /**
@@ -12,19 +12,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        wx.request({
-            method:'POST',
-            url: 'https://localhost:8443/user/login.do',
-            success: function(res) {
-                console.log(res)
-            }
-        }),
-            wx.request({
-            url: 'http://localhost:8080/date_test',
-                success: function (res) {
-                    console.log(res)
-                }
-            })
+
     },
 
     /**
