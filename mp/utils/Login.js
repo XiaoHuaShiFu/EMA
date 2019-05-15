@@ -25,7 +25,7 @@ function login() {
                             code: res.code
                         }
                     }).then(respond => {
-                        console.log(respond)
+                        console.log(respond);
                         statusCode = respond.data.status;
                         //登录成功，保存用户信息
                         if (statusCode == responseCode.SUCCESS) {

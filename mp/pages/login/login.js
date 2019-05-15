@@ -1,5 +1,7 @@
 // pages/login/login.js
 const login = require("../../utils/Login.js");
+const api = require('../../utils/API.js');
+
 Page({
 
     /**
@@ -13,7 +15,38 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        wx.request({
+            url: "https://api.bidadada.top/incident/list.do",
+            method: "GET",
+            data: {
+                pageNum: 1,
+                pageSize: 6
+            },
+            success: (res) => {
+                console.log(res)
+            }
+        })
         console.log(login.login());
+        wx.chooseLocation({
+            success:function(res){
+                console.log(res);
+            }
+        })
+        // let arr = []
+        // wx.request({
+        //     url: "https://localhost:8443/incident/report_incident.do",
+        //     method: 'POST',
+        //     data: {
+        //        tags:["中毒", "卫生"]
+        //     },
+        //     header: {
+        //         'content-type': 'application/x-www-form-urlencoded'
+        //     },
+        //     success: function(res){
+        //         console.log(res);
+        //     }
+        // })
+       
     },
 
     /**
