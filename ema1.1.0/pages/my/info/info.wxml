@@ -1,0 +1,29 @@
+<view>
+  <view style="display: flex; flex-direction: column; align-items: center;">
+    <view class="cu-avatar xxl round solids" style="background-image:url({{user.avatarUrl}}); margin-top: 100rpx; margin-bottom: 100rpx;"></view>
+  </view>
+
+  <view>
+    <view class="cu-form-group margin-top content">
+      <text style="margin-left: 58rpx;">性别</text>
+      <picker bindchange="editGender" value="{{index}}" range="{{genderPicker}}">
+        <view class="picker" wx:if="{{index}}">
+          {{genderPicker[index]}}
+        </view>
+        <view class="picker" wx:else>
+          <text style="margin-right: 20rpx;">{{user.gender}}</text>
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <view class="cu-list menu sm-border margin-top">
+    <view class="cu-item arrow cu-form-group" wx:for="{{userInfoList}}" wx:key="list" for-item="item">
+      <navigator class="content" hover-class="none" url="../info/edit{{item.type}}/edit{{item.type}}" open-type="navigate">
+        <text class="cuIcon-{{item.icon}}"></text>
+        <text>{{item.text}}</text>
+        <text style="float: right; font-size: 28rpx;">{{item.info}}</text>
+      </navigator>
+    </view>
+  </view>
+</view>

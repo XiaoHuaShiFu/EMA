@@ -1,0 +1,60 @@
+<scroll-view scroll-x class="bg-white nav fixed">
+  <view class="flex text-center">
+    <view class="cu-item flex-sub {{index==tabCur?'text-orange cur':''}}" wx:for="{{2}}" wx:key bindtap="tabSelect" data-id="{{index}}">
+      {{tabs[index]}}
+    </view>
+  </view>
+</scroll-view>
+<swiper current="{{tabCur}}" duration="300" bindchange="" style="height: 1000px; margin-top: 100rpx;">
+  <swiper-item>
+    <view class="tab1">
+    </view>
+  </swiper-item>
+  <swiper-item>
+    <swiper-item>
+      <view class="tab2">
+        <view class="cu-list menu-avatar comment solids-top">
+          <navigator class="cu-item" hover-class="none" wx:for="{{comments}}" wx:key="list" for-item="item" url="../../commentDetail/commentDetail?id={{item.commentId}}" open-type="navigate">
+            <view class="cu-avatar round" style="background-image:url({{item.userVo.avatarUrl}});"></view>
+            <view class="content">
+              <view class="flex justify-between">
+                <view class="text-grey">{{item.userVo.nickName}}</view>
+                <image class="margin-right-xs" src="/image/delete.png" style="height: 50rpx; width: 50rpx;" catchtap="deleteComment" id="{{item.commentId}}"></image>
+              </view>
+              <view class="text-content text-df margin-top-sm" style="font-size: 32rpx;">
+                {{item.comment}}
+              </view>
+              <view class="bg-grey padding-sm radius margin-top-sm text-sm">
+                <view class="flex">
+                  <view class="flex-sub">{{item.incidentTitle}}</view>
+                </view>
+              </view>
+              <view class="text-grey margin-top-sm flex justify-between">
+                <view class="text-gray text-df">{{item.commentTime}}</view>
+                <view>
+                  <text class="cuIcon-appreciatefill"></text> {{item.thumbUps}}
+                  <text class="cuIcon-favorfill margin-left-sm"></text> {{item.collections}}
+                  <text class="cuIcon-messagefill margin-left-sm"></text> {{item.comments}}
+                </view>
+              </view>
+            </view>
+          </navigator>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper-item>
+</swiper>
+
+
+<!-- <view class="livingIndex">
+  <view wx:for="{{livingIndex}}" wx:key="livingIndex" class="livingIndexItem" data-current="{{item.inx}}">
+    <image src="{{item.src}}" data-current="{{item.inx}}" bindtap="clickTab" mode="widthheight" style="display:block; margin:auto; height:40px; width: 40px;"></image>
+    <text class="{{currentTab==item.inx?'active':''}}" data-current="{{item.inx}}" bindtap="clickTab" style="display:block; text-align:center; width:auto; margin:5px; font-size: 13px;">{{item.brf}}</text>
+  </view>
+</view>
+<swiper current="{{currentTab}}" duration="300" bindchange="swipeTab" style="display:{{display}}; height:100px; margin:20px; margin-bottom:0px;">
+  <swiper-item wx:for="{{livingIndex}}" wx:key="livingIndex">
+    <view style="font-weight:bold; ">{{item.type}}</view>
+    <view style="margin-top:5px; font-size:15px;">{{item.txt}}</view>
+  </swiper-item>
+</swiper> -->

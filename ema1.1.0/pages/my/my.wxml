@@ -1,0 +1,27 @@
+<!--logs.wxml-->
+<view class="background">
+  <view class="information">
+    <view class="cu-avatar xl round solids margin" style="background-image:url({{user.avatarUrl}})" bindtap="navigateToInfo"></view>
+    <!-- <image src="{{user.avatarUrl}}" bindtap='navigateToInfo'></image> -->
+    <view class="context">
+      <text class='nickName' bindtap="navigateToInfo">{{user.nickName}}</text>
+      <!-- <view class='small-detail'>
+        <view class='small-detail-form' hover-class="none">
+          关注 {{user.followings}}
+        </view>
+        <view class='small-detail-form' hover-class="none">
+          粉丝 {{user.followers}}
+        </view>
+      </view> -->
+    </view>
+  </view>
+
+  <view class="cu-list menu sm-border margin-top">
+    <navigator class="cu-item arrow" wx:for="{{list}}" wx:key="list" for-item="item" url="{{item.url}}" open-type="navigate">
+      <view class="content" hover-class="none">
+        <text class="cuIcon-{{item.icon}} " style="font-size: 30rpx;"></text>
+        <text  style="font-size: 30rpx;">{{item.text}}</text>
+      </view>
+    </navigator>
+  </view>
+</view>

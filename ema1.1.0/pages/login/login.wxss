@@ -1,0 +1,23 @@
+.login button{
+  width: 70vw;
+  height: 7vh;
+  border-radius: 30rpx;
+  margin-bottom: 50rpx;
+  line-height: 80rpx;
+  border-style: none;
+}
+
+.wechat{
+  background-color: #79e08d;
+  color: #fff;
+}
+
+.header{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+Page {
+  height: 100%;
+}

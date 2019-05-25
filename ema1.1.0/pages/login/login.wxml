@@ -1,0 +1,16 @@
+<!-- <view class='container'>
+  <view class='header'>
+    <image src='/image/ema.png' mode='widthFix'></image>
+  </view>
+  <view class='login'>
+    <button class='wechat' bindgetuserinfo='onGetUserInfo' open-type="getUserInfo" lang="zh_CN">
+      微信用户一键登录
+    </button>
+  </view>
+</view> -->
+<view class="background justify-center" style="">
+  <view class="jusify-center block" style="text-align: center;">
+  <text style="font-size: 80rpx;">EMA事件上报程序</text>
+  </view>
+  <button class="margin margin-top-xl cu-btn bg-green lg margin-lr" style="margin-top: 150rpx;" bindgetuserinfo='onGetUserInfo' open-type="getUserInfo">微信用户一键登录</button>
+</view>

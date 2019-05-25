@@ -1,0 +1,43 @@
+<view class="background">
+  <view class="cu-bar bg-white solid-bottom">
+    <view class="action">
+      <text class="cuIcon-titles text-orange"></text> 小组成员
+    </view>
+  </view>
+  <view class="cu-list grid col-2" style="flex-direction: row;">
+    <view class="cu-item" style="align-items: center;" wx:for="{{list}}" wx:key="list" for-item="item">
+      <view class="cu-avatar xl round" style="margin: 15rpx;background-image:url({{item.avatarUrl}});"></view>
+      <text class="text-content margin-top-lg" style="font-size: 35rpx;">{{item.name}}</text>
+    </view>
+  </view>
+
+  <view class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+      <text class="cuIcon-titles text-orange"></text> 支持
+    </view>
+  </view>
+  <view class="cu-list menu sm-border">
+    <view class="cu-item arrow" bindtap="copyLink" data-link="https://github.com/XiaoHuaShiFu/EMA">
+      <view class="content" hover-class="none">
+        <image src="/image/github.png" class="png" mode="aspectFit"></image>
+        <text class="text-grey">Github</text>
+      </view>
+    </view>
+  </view>
+
+
+  <view class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+      <text class="cuIcon-titles text-orange"></text> 插件
+    </view>
+  </view>
+  <view class="cu-list menu sm-border">
+    <view class="cu-item arrow" bindtap="copyLink" data-link="https://github.com/weilanwl/ColorUI">
+      <view class="content" hover-class="none">
+        <image src="/image/colorui.png" class="png" mode="aspectFit"></image>
+        <text class="text-grey">ColorUI组件库</text>
+      </view>
+    </view>
+  </view>
+
+</view>

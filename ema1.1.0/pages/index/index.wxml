@@ -1,0 +1,68 @@
+<view>
+  <!-- 搜索栏 -->
+  <view class="cu-bar bg-white search fixed">
+    <view class="search-form round">
+      <text class="cuIcon-search"></text>
+      <input type="text" placeholder="搜索" confirm-type="search" bindinput="search"></input>
+    </view>
+  </view>
+  <!-- 动态 -->
+  <view style="margin-top: 100rpx;">
+    <navigator class="cu-card dynamic no-card solid" hover-class="none" wx:for="{{posts}}" wx:key="list" for-item="item" url="../postDetail/postDetail?id={{item.id}}&value={{index}}" open-type="navigate" wx:if="{{!item.deleted}}">
+      <view class="cu-item shadow">
+        <view class="cu-list menu-avatar">
+          <view class="cu-item">
+            <view class="cu-avatar round lg" wx:if="{{item.anon&&(item.userVo.id!=user.id)}}" style="background-image:url(http://www.xiaohehe.net/uploads/allimg/150305/304-1503051H143.png);"></view>
+            <view class="cu-avatar round lg" wx:else style="background-image:url({{item.userVo.avatarUrl}});"></view>
+            <view class="content flex-sub">
+              <view wx:if="{{item.anon&&(item.userVo.id!=user.id)}}">匿名用户</view>
+              <view wx:elif="{{item.anon}}">{{item.userVo.nickName}}[匿名]</view>
+              <view wx:else>{{item.userVo.nickName}}</view>
+              <view class="text-gray text-sm flex justify-between">
+                {{item.occurTime}}
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="text-content text-bold" style="font-size: 32rpx;">
+          {{item.title}}
+        </view>
+        <view class="text-content">
+          {{item.description}}
+        </view>
+        <!-- 附件 -->
+        <view class="grid flex-sub padding-lr col-1" wx:if="{{item.mainImageUrl!=null}}" catchtap="showImage" data-url="{{item.mainImageUrl}}">
+          <view class="bg-img only-img" style="background-image:url({{item.mainImageUrl}});">
+          </view>
+        </view>
+        <!-- 标签 -->
+        <view class="padding bg-white padding-bottom-xs" wx:if="{{postInfo.tagVoList.length>0}}">
+          <view class="cu-tag radius margin-lr-sm" wx:for="{{postInfo.tagVoList}}" wx:key="list" for-item="tag">{{tag.name}}</view>
+        </view>
+        <!-- 记录 -->
+        <view class="text-gray text-sm padding padding-top-sm flex fl">
+          <view class="info text-cut" hover-class="none" style="width: 380rpx;" catchtap="showPosition" id="{{index}}">
+            <text class="cuIcon-location margin-lr-xs"></text> {{item.addressName}}
+          </view>
+        </view>
+        <view class="text-gray text-sm padding-top-sm flex fr">
+          <view class="info fl">
+            <text class="padding-right-sm">
+              <text class="cuIcon-attentionfill margin-lr-xs"></text> {{item.views}}
+            </text>
+          </view>
+          <view class="info fl">
+            <text class="padding-right-sm" catchtap="collectIncident" id="{{item.id}}" data-index="{{index}}">
+              <text class="cuIcon-favorfill  {{item.attention?'text-yellow':''}} margin-lr-xs"></text> {{item.attentions}}
+            </text>
+          </view>
+          <view class="info fl">
+            <text class="padding-right-sm">
+              <text class="cuIcon-messagefill margin-lr-xs"></text> {{item.comments}}
+            </text>
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</view>

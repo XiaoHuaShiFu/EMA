@@ -1,0 +1,18 @@
+<view class="cu-list menu-avatar comment solids-top">
+  <navigator class="cu-item solid" hover-class="none" wx:for="{{message}}" wx:key="list" for-item="item" url="../../postDetail/postDetail?id={{item.incidentId}}" open-type="navigate">
+    <view class="cu-avatar" style="background-image:url({{item.type!=20?'/image/comment.png':'/image/star.png'}});"></view>
+    <view class="content">
+      <view class="flex justify-between">
+        <view class="text-grey">{{item.title}}</view>
+      </view>
+      <view class="bg-grey padding-sm radius margin-top-sm text-sm">
+        <view class="flex">
+          <view class="flex-sub">{{item.content}}</view>
+        </view>
+      </view>
+      <view class="text-grey margin-top-sm flex justify-between">
+        <view class="text-gray text-df">{{item.noticeTime}}</view>
+      </view>
+    </view>
+  </navigator>
+</view>

@@ -1,0 +1,8 @@
+page {
+  background-color: #f8f8f8;
+}
+
+.cu-avatar.xxl {
+  width: 250rpx;
+  height: 250rpx;
+}

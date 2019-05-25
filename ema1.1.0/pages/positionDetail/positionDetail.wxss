@@ -1,0 +1,10 @@
+.address{
+    height: 80px;
+    width: 100%;
+    border: none;
+    font-size: 35rpx;
+    color: black;
+    text-overflow:ellipsis;
+    word-wrap:break-word;
+    background-color: white;
+}

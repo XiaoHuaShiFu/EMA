@@ -1,0 +1,13 @@
+<view>
+  <view class="cu-form-group">
+    <input auto-focus maxlength="50" disabled="{{false}}" bindinput="changeStatus" placeholder="邮箱"></input>
+  </view>
+  <view style="margin-top: 10rpx;">
+    <text class="cuIcon-roundclosefill text-red margin-left" wx:if="{{disable}}"> 邮箱格式错误</text>
+    <text class="cuIcon-roundcheckfill text-green margin-left" wx:else> 邮箱格式正确</text>
+    <text class="text-grey" style="float: right; font-size: 25rpx; margin-right: 20rpx;">{{length}}</text>
+  </view>
+  <view class=" padding flex flex-direction margin-sm ">
+    <button class="cu-btn bg-green lg " disabled="{{disable}}" bindtap="editEmail">确定</button>
+  </view>
+</view>

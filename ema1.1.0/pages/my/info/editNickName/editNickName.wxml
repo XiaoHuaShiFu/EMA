@@ -1,0 +1,11 @@
+<view>
+  <view class="cu-form-group">
+    <input auto-focus maxlength="30" disabled="{{false}}" bindinput="changeStatus" placeholder="昵称"></input>
+  </view>
+  <view style="margin-top: 10rpx; margin-right: 20rpx;">
+    <text class="text-grey" style="float: right; font-size: 25rpx;">{{length}}</text>
+  </view>
+  <view class=" padding flex flex-direction margin">
+    <button class="cu-btn bg-green lg" disabled="{{disable}}" bindtap="editNickName">确定</button>
+  </view>
+</view>

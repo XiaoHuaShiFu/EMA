@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/post/post",
+    "pages/my/my",
+    "pages/my/comment/comment",
+    "pages/my/about/about",
+    "pages/my/message/message",
+    "pages/my/info/info",
+    "pages/my/info/editEmail/editEmail",
+    "pages/my/info/editNickName/editNickName",
+    "pages/my/info/editPhone/editPhone",
+    "pages/my/postList/postList",
+    "pages/commentDetail/commentDetail",
+    "pages/postDetail/postDetail",
+    "pages/positionDetail/positionDetail",
+    "pages/my/collect/collect"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#A4A4A4",
+    "navigationBarTitleText": "EMA",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#39b54a",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "selectedIconPath": "image/globe-hover.png",
+        "iconPath": "image/globe.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/post/post",
+        "selectedIconPath": "image/edit-hover.png",
+        "iconPath": "image/edit.png",
+        "text": "发布"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "selectedIconPath": "image/user-hover.png",
+        "iconPath": "image/user.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "sitemapLocation": "sitemap.json"
+}

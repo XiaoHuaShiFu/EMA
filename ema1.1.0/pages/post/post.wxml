@@ -1,0 +1,113 @@
+<form>
+  <!-- 标题 -->
+  <view class="cu-form-group margin-top">
+    <view class="title">标题</view>
+    <input value="{{title}}" maxlength="50" placeholder="事件标题" bindinput="titleChange"></input>
+  </view>
+  <!-- 内容 -->
+  <view class="cu-form-group align-start">
+    <view class="title">内容</view>
+    <textarea value="{{content}}" maxlength="1000" placeholder="事件内容" bindinput="contentChange"></textarea>
+  </view>
+  <!-- 日期 -->
+  <view class="cu-form-group margin-top">
+    <view class="title">日期</view>
+    <picker mode="date" value="{{curDate}}" start="2015-09-01" end="{{curDate}}" bindchange="dateChange">
+      <view class="picker" style="color: #808080;">
+        {{date}}
+      </view>
+    </picker>
+  </view>
+  <!-- 时间 -->
+  <view class="cu-form-group">
+    <view class="title">时间</view>
+    <picker mode="time" value="{{curTime}}" start="00:00" end="{{curTime}}" bindchange="timeChange" wx:if="{{date==curDate}}">
+      <view class="picker" style="color: #808080;">
+        {{time}}
+      </view>
+    </picker>
+    <picker mode="time" value="{{curTime}}" start="00:00" end="23:59" bindchange="timeChange" wx:else>
+      <view class="picker" style="color: #808080;">
+        {{time}}
+      </view>
+    </picker>
+  </view>
+  <!-- 地点 -->
+  <view class="cu-form-group">
+    <view class="title">地点</view>
+    <view class="justify-between" style="width: 100%;" bindtap="getPosition">
+      <view class="fl" style="font-size: 30rpx; color: #808080;" wx:if="{{addressName==''}}">事件发生地点</view>
+      <view class="fl" style="font-size: 30rpx; color: #808080;" wx:else>{{addressName}}</view>
+      <text class="cuIcon-locationfill text-orange fr" style="font-size: 35rpx;"></text>
+    </view>
+  </view>
+  <!-- 匿名 -->
+  <view class="cu-form-group margin-top">
+    <view class="title">匿名</view>
+    <switch bindchange="setAnon" checked="{{anon}}"></switch>
+  </view>
+  <!-- 标签 -->
+  <!-- <view class="cu-form-group margin-top" style="">
+    <view class="title">标签</view>
+      <view wx:if="{{tagsId.length}}" style="width: 100%;">
+        <view class="justify-start flex" style="flex-direction: row;">
+          <view class="cu-tag radius margin-lr-xs" wx:for="{{tags}}" wx:key="list" for-item="item">{{item}}</view>
+        </view>
+      </view>
+      <view class="fl" style="font-size: 30rpx; color: #808080; width: 100%;" wx:else>事件标签</view>
+      <navigator class="cuIcon-roundaddfill text-green margin-left-xs" hover-class="none" style="font-size: 35rpx;" url="../post/tag/tag"></navigator>
+  </view> -->
+
+  <view class="cu-form-group margin-top">
+    <view class="title">标签</view>
+    <view wx:if="{{tagsId.length}}" style="width: 100%;">
+      <view class="justify-start flex" style="flex-direction: row;">
+        <view class="cu-tag radius margin-lr-xs" wx:for="{{tags}}" wx:key="list" for-item="item">{{item}}</view>
+      </view>
+    </view>
+    <!-- <view class="action">
+      <button class="cu-btn bg-green shadow" bindtap="showModal" data-target="ChooseModal">Choose</button>
+    </view> -->
+    <view class="cuIcon-roundaddfill text-green margin-left-xs" hover-class="none" style="font-size: 35rpx;" bindtap="showModal" data-target="ChooseModal"></view>
+
+  </view>
+  <view class="cu-modal bottom-modal {{modalName=='ChooseModal'?'show':''}}" bindtap="hideModal">
+    <scroll-view scroll-y="{{true}}" class="cu-dialog" style="height: 650rpx;" bindscrolltolower="reachBottom" catchtap>
+      <view class="cu-bar bg-white foot" style='bottom: 650rpx;'>
+        <view class="action text-blue" bindtap="hideModal">取消</view>
+        <view class="action text-green" bindtap="hideModal">确定</view>
+      </view>
+      <view class="grid col-3 padding-sm padding-lr-xs flex">
+        <view wx:for="{{tagsList}}" class="padding-xs" wx:key="list" for-item="item">
+          <button class="cu-btn orange lg block {{item.checked?'bg-orange':'line-orange'}}" disabled="{{selectedNum>=4&&(!item.checked)}}" bindtap="chooseTag" id="{{index}}"> {{item.name}}
+            <!-- <view class="cu-tag sm round {{item.checked?'bg-white text-orange':'bg-orange'}}" wx:if="{{item.hot}}">HOT</view> -->
+          </button>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 附件 -->
+  <view class="cu-bar bg-white margin-top">
+    <view class="action">
+      图片上传
+    </view>
+  </view>
+  <view class="cu-form-group">
+    <view class="grid col-4 grid-square flex-sub">
+      <view class="bg-img" bindtap="viewImage" wx:if="{{imageUrl!=''}}">
+        <image src='{{imageUrl}}' mode='aspectFill'></image>
+        <view class="cu-tag bg-red" catchtap="deleteImage" data-index="{{index}}">
+          <text class="cuIcon-close"></text>
+        </view>
+      </view>
+      <view class="solids" bindtap="chooseImage" wx:else>
+        <text class="cuIcon-cameraadd"></text>
+      </view>
+    </view>
+  </view>
+  <!-- 提交 -->
+  <view class="padding flex flex-direction">
+    <button class="cu-btn bg-green lg" bindtap="submit" disabled="{{title==''||content==''||address==''||tagsId.length==0}}">提交</button>
+  </view>
+</form>

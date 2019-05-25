@@ -1,0 +1,92 @@
+<view class="cu-card dynamic no-card">
+  <view class="cu-item shadow">
+    <view class="cu-list menu-avatar">
+      <view class="cu-item">
+        <view class="cu-avatar round lg" wx:if="{{commentInfo.anon&&(commentInfo.userVo.id!=user.id)}}" style="background-image:url(http://www.xiaohehe.net/uploads/allimg/150305/304-1503051H143.png);"></view>
+        <view class="cu-avatar round lg" wx:else style="background-image:url({{commentInfo.userVo.avatarUrl}});"></view>
+        <view class="content flex-sub">
+          <view wx:if="{{commentInfo.anon&&(commentInfo.userVo.id!=user.id)}}">匿名用户</view>
+          <view wx:elif="{{commentInfo.anon}}">{{commentInfo.userVo.nickName}}[匿名]</view>
+          <view wx:else>{{commentInfo.userVo.nickName}}</view>
+          <view class="text-gray text-sm flex justify-between">
+            {{commentInfo.commentTime}}
+          </view>
+        </view>
+        <image class="margin-right fr" src="/image/delete.png" style="height: 50rpx; width: 50rpx;" catchtap="deleteComment" wx:if="{{commentInfo.userVo.id==user.id}}"></image>
+      </view>
+    </view>
+    <view class="text-content">
+      {{commentInfo.comment}}
+    </view>
+    <!-- <view class="grid flex-sub padding-lr {{isCard?'col-3 grid-square':'col-1'}}">
+      <view class="bg-img {{isCard?'':'only-img'}}" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);" wx:for="{{isCard?9:1}}" wx:key="{{index}}">
+      </view>
+    </view> -->
+    <!-- 附件 -->
+    <!-- <view class="grid flex-sub padding-lr col-1" wx:if="{{commentInfo.mainImageUrl!=null}}" catchtap="showImage" data-url="{{commentInfo.mainImageUrl}}">
+      <view class="bg-img only-img" style="background-image:url({{commentInfo.mainImageUrl}});">
+      </view>
+    </view> -->
+    <!-- 记录 -->
+    <view class="text-gray text-sm padding padding-right padding-top-sm flex fr">
+      <view class="info">
+        <text class="padding-right-sm fl" catchtap="thumbUpComment">
+           <text class="cuIcon-appreciatefill margin-lr-xs {{commentInfo.thumbUp?'text-red':''}}"></text> {{commentInfo.thumbUps}}
+        </text>
+      </view>
+      <view class="info">
+        <text class="padding-right-sm fl" catchtap="collectComment">
+           <text class="cuIcon-favorfill margin-lr-xs {{commentInfo.collection?'text-yellow':''}}"></text> {{commentInfo.collections}}
+        </text>
+      </view>
+      <view class="info">
+        <text class="padding-right-sm fl" catchtap="commentComment">
+           <text class="cuIcon-messagefill margin-lr-xs"></text> {{commentInfo.comments}}
+        </text>
+      </view>
+    </view>
+    <!-- </view> -->
+    <!-- 二级评论 -->
+    <view style='height: 80rpx; width: 100%;'></view>
+    <view class="cu-list menu-avatar comment solids-top">
+      <view class="cu-item solid" hover-class="none" wx:for="{{scndComments}}" wx:key="list" for-item="item" wx:if="{{!item.deleted}}">
+        <view class="cu-avatar round" style="background-image:url({{item.userVo.avatarUrl}});"></view>
+        <view class="content">
+          <view class="flex justify-between">
+            <view class="text-grey" wx:if="{{item.parScndCommentUserVo}}">{{item.userVo.nickName}} 回复{{item.parScndCommentUserVo.nickName}}:</view>
+            <view class="text-grey" wx:else>{{item.userVo.nickName}}</view>
+            <image class="margin-right-xs" src="/image/delete.png" style="height: 50rpx; width: 50rpx;" catchtap="deleteScndComment" id="{{item.id}}" wx:if="{{item.userVo.id==user.id}}"></image>
+          </view>
+          <view class="text-gray text-content text-df">
+            {{item.comment}}
+          </view>
+          <view class="">
+            <view class="text-gray text-sm  padding-top-sm fl">
+              <view class="text-gray text-sm">{{item.commentTime}}</view>
+            </view>
+            <view class="text-gray text-sm padding-top-sm flex fr">
+              <view class="info">
+                <text class="padding-right-sm fl" catchtap="thumbUpScndComment" id="{{item.id}}" data-index="{{index}}">
+                  <text class="cuIcon-appreciatefill margin-lr-xs {{item.thumbUp?'text-red':''}}"></text> {{item.thumbUps}}
+                </text>
+              </view>
+              <view class="info">
+                <text class="padding-right-sm fl" catchtap="commentScndComment" id="{{item.id}}" data-index="{{index}}">
+                  <text class="cuIcon-messagefill margin-lr-xs"></text> 
+                </text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 输入框 -->
+<view class="cu-bar foot input {{inputBottom!=0?'cur':''}}" style="bottom:{{inputBottom}}px" wx:if="{{inputDisplay>0}}">
+  <view class="action" catchtap="setAnon">
+    <view class="cuIcon-{{anon?'cardboardfill':'cardboard'}}"></view>
+  </view>
+  <input class="solid-bottom" disable="{{comment.length==0}}" focus="{{inputDisplay>0}}" bindfocus="inputFocus" bindblur="inputBlur" adjust-position="{{false}}" maxlength="300" cursor-spacing="10" bindinput="getInput"></input>
+  <button class="cu-btn bg-green shadow" bindtap="sendComment" disabled="{{comment==''}}" value="{{comment}}">发送</button>
+</view>

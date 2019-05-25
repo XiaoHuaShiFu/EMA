@@ -1,0 +1,7 @@
+Page {
+  height: 100%;
+}
+
+.info {
+  width: 100rpx;
+}

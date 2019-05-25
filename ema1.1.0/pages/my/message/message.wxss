@@ -1,0 +1,85 @@
+/* pages/my/message/message.wxss */
+Page{
+  height: 100%;
+  /* background-color: white; */
+}
+.container{
+  height: 100%;
+  background-color: white;
+  flex-direction: column;
+}
+.message{
+  display: flex;
+  flex-direction:row;
+  height: 70px;
+  width: 100%;
+  border:1px solid white;
+  margin-top: 20rpx;
+  line-height: 80rpx;
+  margin: 2px;
+}
+.imageType{
+  margin-top: 20px;
+  margin-left: 5px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid white;
+}
+.content{
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  border: 1px solid white;
+  width: 300px;
+}
+.date{
+    margin: 1px;
+  font-size: 25rpx;
+  border: 1px solid white;
+  height: 50%;
+  width: 100px;
+  text-align: center;
+}
+.typeAndContent{
+  display: flex;
+  flex-direction: row;
+  margin: 1px;
+  border: 1px solid white;
+  width: 250px;
+  height: 50%;
+}
+.type{
+    margin: 1px;
+  font-size: 35rpx;
+  border: 1px solid white;
+}
+.content_word{
+  margin: 1px;
+  font-size: 35rpx;
+  border: 1px solid white;
+  width: 250px;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+
+
+.cu-avatar {
+	font-variant: small-caps;
+	margin: 10rpx;
+	padding: 0;
+	display: inline-flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+	color: var(--white);
+	white-space: nowrap;
+	position: relative;
+	width: 60rpx;
+	height: 60rpx;
+	background-size: cover;
+	background-position: center;
+	vertical-align: middle;
+	font-size: 1.5em;
+}

@@ -1,0 +1,27 @@
+<view class="cu-list menu-avatar comment solids-top">
+  <view class="cu-item" hover-class="none" wx:for="{{comments}}" wx:key="list" for-item="item" wx:if="{{!item.deleted}}">
+    <view class="cu-avatar round" style="background-image:url({{user.avatarUrl}});"></view>
+    <view class="content">
+      <view class="flex justify-between">
+        <view class="text-grey">{{user.nickName}}</view>
+        <!-- <image class="margin-right-xs" src="/image/delete.png" style="height: 50rpx; width: 50rpx;" catchtap="deleteComment" id="{{item.commentId}}" data-index="{{index}}"></image> -->
+      </view>
+      <view class="text-content text-df margin-top-sm" style="font-size: 32rpx;">
+        {{item.comment}}
+      </view>
+      <view class="bg-grey padding-sm radius margin-top-sm text-sm">
+        <view class="flex">
+          <view class="flex-sub">{{item.incidentTitle}}</view>
+        </view>
+      </view>
+      <view class="text-grey margin-top-sm flex justify-between">
+        <view class="text-gray text-df">{{item.commentTime}}</view>
+        <view>
+          <text class="cuIcon-appreciatefill"></text> {{item.thumbUps}}
+          <text class="cuIcon-favorfill margin-left-sm"></text> {{item.collections}}
+          <text class="cuIcon-messagefill margin-left-sm"></text> {{item.comments}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
